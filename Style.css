@@ -16,23 +16,24 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: 'Georgia', 'Times New Roman', serif;
 }
 
 body {
   background-color: var(--dark-bg);
   color: var(--text-main);
-  padding: 20px 12px;
+  font-family: 'EB Garamond', 'Georgia', 'Times New Roman', serif;
+  padding: 24px 12px;
   display: flex;
   justify-content: center;
   position: relative;
   min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
 }
 
 .ambient-glow {
   position: fixed;
   top: 0; left: 0; right: 0; bottom: 0;
-  background: radial-gradient(circle at 50% 20%, rgba(212, 175, 55, 0.07) 0%, rgba(0, 0, 0, 0) 75%);
+  background: radial-gradient(circle at 50% 18%, rgba(212, 175, 55, 0.08) 0%, rgba(0, 0, 0, 0) 75%);
   pointer-events: none;
   z-index: 0;
 }
@@ -44,7 +45,11 @@ body {
   z-index: 1;
 }
 
-/* Metallic Text & Border Styling */
+/* Typography & Metallic Gold Effects */
+h1, h2, h3, .gold-text {
+  font-family: 'Cinzel', 'Georgia', serif;
+}
+
 .gold-text {
   background: linear-gradient(135deg, #bf953f 0%, #fcf6ba 25%, #b38728 50%, #fbf5b7 75%, #aa771c 100%);
   -webkit-background-clip: text;
@@ -55,7 +60,7 @@ body {
 .gold-border-frame {
   border: 2px solid transparent;
   border-image: linear-gradient(to bottom right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c) 1;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.8), inset 0 0 10px rgba(212, 175, 55, 0.08);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.85), inset 0 0 12px rgba(212, 175, 55, 0.09);
 }
 
 /* Header */
@@ -67,16 +72,16 @@ header {
 }
 
 .orthodox-cross {
-  font-size: 2.5rem;
+  font-size: 2.8rem;
   color: var(--gold-bright);
-  margin-bottom: 5px;
-  text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+  margin-bottom: 4px;
+  text-shadow: 0 0 12px rgba(255, 215, 0, 0.5);
 }
 
 h1 {
   font-size: 2.2rem;
   letter-spacing: 2px;
-  margin-bottom: 5px;
+  margin-bottom: 6px;
 }
 
 .subtitle {
@@ -88,13 +93,13 @@ h1 {
 .scripture {
   color: var(--text-muted);
   font-style: italic;
-  font-size: 0.95rem;
+  font-size: 0.98rem;
 }
 
-/* User Auth Bar */
+/* User Authentication Bar */
 .user-bar {
   background: var(--card-bg);
-  padding: 12px 20px;
+  padding: 14px 20px;
   border-radius: 4px;
   display: flex;
   justify-content: space-between;
@@ -105,13 +110,13 @@ h1 {
 }
 
 .user-welcome {
-  font-size: 0.95rem;
+  font-size: 1rem;
   color: var(--text-muted);
 }
 
 .user-welcome strong {
   color: var(--gold-bright);
-  font-size: 1.05rem;
+  font-size: 1.1rem;
 }
 
 .auth-controls {
@@ -120,37 +125,40 @@ h1 {
   align-items: center;
 }
 
-input, select {
-  background: rgba(0, 0, 0, 0.6);
+input, select, textarea {
+  font-family: inherit;
+  background: rgba(0, 0, 0, 0.65);
   border: 1px solid var(--gold-dark);
   color: var(--text-main);
-  padding: 6px 10px;
+  padding: 7px 10px;
   border-radius: 4px;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   outline: none;
 }
 
-input:focus, select:focus {
+input:focus, select:focus, textarea:focus {
   border-color: var(--gold-bright);
-  box-shadow: 0 0 5px rgba(255, 215, 0, 0.4);
+  box-shadow: 0 0 6px rgba(255, 215, 0, 0.4);
 }
 
 /* Buttons */
 button {
+  font-family: 'Cinzel', serif;
   background-color: var(--crimson);
   color: var(--gold-bright);
   border: 1px solid var(--gold-primary);
-  padding: 7px 14px;
+  padding: 8px 16px;
   border-radius: 4px;
   cursor: pointer;
-  font-weight: bold;
+  font-weight: 700;
   font-size: 0.85rem;
+  letter-spacing: 0.5px;
   transition: all 0.2s ease-in-out;
 }
 
 button:hover {
   background-color: var(--crimson-hover);
-  box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+  box-shadow: 0 0 12px rgba(212, 175, 55, 0.5);
   transform: translateY(-1px);
 }
 
@@ -177,9 +185,9 @@ button.sub-btn:hover {
 
 .icon-card {
   background: var(--card-bg);
-  padding: 12px;
+  padding: 14px;
   text-align: center;
-  width: 240px;
+  width: 250px;
   border-radius: 4px;
   position: relative;
 }
@@ -188,7 +196,7 @@ button.sub-btn:hover {
   content: '';
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
-  background: radial-gradient(circle, rgba(255, 215, 0, 0.1) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(255, 215, 0, 0.12) 0%, transparent 70%);
   animation: candleFlicker 4s infinite alternate ease-in-out;
   pointer-events: none;
 }
@@ -201,7 +209,7 @@ button.sub-btn:hover {
 
 .icon-img-wrapper {
   width: 100%;
-  height: 250px;
+  height: 260px;
   position: relative;
   background: #120b06;
   border-radius: 4px;
@@ -225,52 +233,53 @@ button.sub-btn:hover {
 }
 
 .icon-caption {
-  margin-top: 10px;
-  font-size: 0.88rem;
+  margin-top: 12px;
+  font-size: 0.92rem;
   color: var(--gold-bright);
-  line-height: 1.35;
+  line-height: 1.4;
   font-style: italic;
 }
 
 /* Prologue Card */
 .prologue-card {
   background: var(--card-bg);
-  padding: 18px 22px;
+  padding: 20px 24px;
   border-radius: 4px;
   margin-bottom: 25px;
-  line-height: 1.6;
+  line-height: 1.65;
 }
 
 .prologue-card h3 {
   color: var(--gold-primary);
-  margin-bottom: 8px;
-  font-size: 1.15rem;
+  margin-bottom: 10px;
+  font-size: 1.2rem;
   border-bottom: 1px solid rgba(212, 175, 55, 0.2);
-  padding-bottom: 5px;
+  padding-bottom: 6px;
 }
 
 .prologue-card p {
   color: var(--text-muted);
-  font-size: 0.95rem;
+  font-size: 1.02rem;
 }
 
 /* Date Selector */
 .date-selector {
   background: var(--card-bg);
-  padding: 12px 20px;
+  padding: 14px 20px;
   border-radius: 4px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 25px;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 12px;
 }
 
 .date-display {
-  font-size: 1.15rem;
+  font-size: 1.2rem;
   color: var(--gold-bright);
   font-weight: bold;
+  font-family: 'Cinzel', serif;
 }
 
 .date-nav {
@@ -295,7 +304,7 @@ button.sub-btn:hover {
 }
 
 .user-card.active-user-card {
-  box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+  box-shadow: 0 0 18px rgba(212, 175, 55, 0.25);
 }
 
 .user-card-header {
@@ -304,21 +313,21 @@ button.sub-btn:hover {
   align-items: center;
   border-bottom: 1px solid var(--card-border);
   padding-bottom: 10px;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
 
 .user-card-header h2 {
   color: var(--gold-primary);
-  font-size: 1.3rem;
+  font-size: 1.35rem;
 }
 
 .progress-container {
-  margin-bottom: 15px;
+  margin-bottom: 16px;
 }
 
 .progress-bar-bg {
-  background: rgba(0, 0, 0, 0.5);
-  height: 8px;
+  background: rgba(0, 0, 0, 0.6);
+  height: 9px;
   border-radius: 4px;
   overflow: hidden;
   border: 1px solid var(--card-border);
@@ -332,32 +341,33 @@ button.sub-btn:hover {
 }
 
 .progress-text {
-  font-size: 0.78rem;
+  font-size: 0.82rem;
   color: var(--text-muted);
-  margin-top: 4px;
+  margin-top: 5px;
   display: flex;
   justify-content: space-between;
 }
 
 /* Prayer Action Cards */
 .prayer-item {
-  background: rgba(0, 0, 0, 0.3);
-  padding: 12px;
+  background: rgba(0, 0, 0, 0.35);
+  padding: 12px 14px;
   border-radius: 4px;
   border-left: 3px solid var(--card-border);
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
 
 .prayer-item.is-done {
   border-left-color: var(--gold-bright);
-  background: rgba(46, 77, 37, 0.2);
+  background: rgba(46, 77, 37, 0.25);
 }
 
 .prayer-name {
-  font-size: 0.82rem;
+  font-size: 0.88rem;
   color: var(--text-muted);
   font-style: italic;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
+  line-height: 1.35;
 }
 
 .status-toggle-btn {
@@ -378,8 +388,8 @@ button.sub-btn:hover {
 .beads-container {
   display: flex;
   justify-content: center;
-  gap: 4px;
-  margin-top: 8px;
+  gap: 5px;
+  margin-top: 10px;
 }
 
 .bead {
@@ -392,82 +402,80 @@ button.sub-btn:hover {
 
 .bead.filled {
   background: var(--gold-bright);
-  box-shadow: 0 0 5px var(--gold-bright);
+  box-shadow: 0 0 6px var(--gold-bright);
 }
 
 /* Reflection Note Area */
 .note-box {
-  margin-top: 10px;
+  margin-top: 12px;
 }
 
 .note-box textarea {
   width: 100%;
-  height: 55px;
-  background: rgba(0, 0, 0, 0.4);
+  height: 60px;
+  background: rgba(0, 0, 0, 0.45);
   border: 1px solid var(--card-border);
   color: var(--text-main);
   border-radius: 4px;
-  padding: 6px;
-  font-size: 0.8rem;
+  padding: 8px;
+  font-size: 0.85rem;
   resize: none;
-}
-
-.note-box textarea:focus {
-  border-color: var(--gold-dark);
 }
 
 /* Matrix Table */
 .matrix-card {
   background: var(--card-bg);
-  padding: 20px;
+  padding: 22px;
   border-radius: 4px;
 }
 
 .matrix-card h3 {
   color: var(--gold-primary);
-  margin-bottom: 15px;
+  margin-bottom: 16px;
+  font-size: 1.25rem;
 }
 
 .matrix-table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 0.82rem;
+  font-size: 0.88rem;
   text-align: center;
 }
 
 .matrix-table th, .matrix-table td {
-  padding: 8px 6px;
+  padding: 9px 8px;
   border: 1px solid var(--card-border);
 }
 
 .matrix-table th {
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.6);
   color: var(--gold-bright);
+  font-family: 'Cinzel', serif;
 }
 
 .matrix-table tr.active-row {
-  background: rgba(212, 175, 55, 0.1);
+  background: rgba(212, 175, 55, 0.12);
 }
 
 .matrix-status-dot {
   display: inline-block;
-  width: 10px;
-  height: 10px;
+  width: 11px;
+  height: 11px;
   border-radius: 50%;
   background: #3a2719;
 }
 
 .matrix-status-dot.completed {
   background: var(--gold-bright);
-  box-shadow: 0 0 6px var(--gold-bright);
+  box-shadow: 0 0 8px var(--gold-bright);
 }
 
 .matrix-status-dot.partial {
   background: #d4af37;
 }
 
-/* Responsive */
-@media (max-width: 600px) {
+/* Responsive Styles */
+@media (max-width: 650px) {
   .user-bar, .date-selector {
     flex-direction: column;
     align-items: stretch;
