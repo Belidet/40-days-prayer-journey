@@ -1,4 +1,4 @@
-// Constants & User Credentials
+// Pilgrim Configuration & Authentication
 const USERS = ['Belidet', 'Ephi', 'Seli', 'Ermi'];
 const PASSWORDS = {
   Belidet: 'belidet123',
@@ -13,10 +13,10 @@ const TOTAL_DAYS = 40;
 let loggedInUser = localStorage.getItem('orthodox_journey_user') || null;
 let selectedDateStr = START_DATE_STR;
 
-// Database state stored in local storage
+// Database state stored in local browser storage
 let db = JSON.parse(localStorage.getItem('orthodox_journey_db')) || {};
 
-// Initialize missing structure
+// Initialize data structure for 40 days
 function initDataStore() {
   const startDate = new Date(START_DATE_STR);
   for (let i = 0; i < TOTAL_DAYS; i++) {
@@ -41,7 +41,7 @@ function saveDb() {
   localStorage.setItem('orthodox_journey_db', JSON.stringify(db));
 }
 
-// Interactive Web Audio Chime Synthesis
+// Web Audio API Synthesized Bell Chime
 function playGentleChime() {
   try {
     const AudioCtx = window.AudioContext || window.webkitAudioContext;
@@ -64,11 +64,11 @@ function playGentleChime() {
     osc.start();
     osc.stop(ctx.currentTime + 2.0);
   } catch (e) {
-    // Graceful fallback for web audio restrictions
+    // Audio context fallback
   }
 }
 
-// Incense Particle FX
+// Incense Particle Visual FX
 function triggerGoldenIncense() {
   const canvas = document.createElement('canvas');
   canvas.style.position = 'fixed';
@@ -117,7 +117,7 @@ function triggerGoldenIncense() {
   animate();
 }
 
-// Authentication Functions
+// User Authentication
 function loginUser() {
   const user = document.getElementById('userSelect').value;
   const pass = document.getElementById('passInput').value;
@@ -158,7 +158,7 @@ function updateAuthUI() {
   }
 }
 
-// Date Mechanics
+// Date Navigation
 function changeDate(deltaDays) {
   const cur = new Date(selectedDateStr);
   cur.setDate(cur.getDate() + deltaDays);
@@ -194,7 +194,7 @@ function updateDateLabel() {
   document.getElementById('dateDisplayLabel').textContent = `Day ${diffDays} of 40 — ${dateFormatted}`;
 }
 
-// Prayer Toggles & Notes
+// Prayer Status Toggles
 function togglePrayer(user, prayerType) {
   if (loggedInUser !== user) {
     alert(`Please log in as ${user} to update prayer records.`);
@@ -223,7 +223,6 @@ function saveNote(user, noteText) {
   saveDb();
 }
 
-// Calculated Metrics
 function get40DayCompletionCount(user) {
   let count = 0;
   Object.keys(db).forEach(date => {
@@ -234,7 +233,7 @@ function get40DayCompletionCount(user) {
   return count;
 }
 
-// Render Core Components
+// Component Rendering
 function renderDashboard() {
   const container = document.getElementById('pilgrimsDashboard');
   container.innerHTML = '';
@@ -247,13 +246,13 @@ function renderDashboard() {
     const progressPct = Math.round((totalCompleted / TOTAL_DAYS) * 100);
 
     const isUserLoggedIn = (loggedInUser === user);
-    const card = document.createElement('div');
+    const card = document.createElement('article');
     card.className = `user-card gold-border-frame ${isUserLoggedIn ? 'active-user-card' : ''}`;
 
     card.innerHTML = `
       <div class="user-card-header">
         <h2>${user}</h2>
-        <span style="font-size:0.8rem; color:var(--gold-bright);">${totalCompleted}/40 Days</span>
+        <span style="font-size:0.85rem; color:var(--gold-bright); font-weight:bold;">${totalCompleted}/40 Days</span>
       </div>
 
       <div class="progress-container">
@@ -269,7 +268,7 @@ function renderDashboard() {
       <!-- Jesus Prayer -->
       <div class="prayer-item ${data.jesus ? 'is-done' : ''}">
         <div class="prayer-name">"Lord Jesus Christ Son of God have mercy on me a sinner."</div>
-        <button class="status-toggle-btn ${data.jesus ? 'done' : ''}" 
+        <button type="button" class="status-toggle-btn ${data.jesus ? 'done' : ''}" 
                 onclick="togglePrayer('${user}', 'jesus')"
                 ${!isUserLoggedIn ? 'style="opacity:0.75;"' : ''}>
           ${data.jesus ? '✓ Prayer Completed' : 'Mark as Done'}
@@ -282,7 +281,7 @@ function renderDashboard() {
       <!-- Theotokos Prayer -->
       <div class="prayer-item ${data.theotokos ? 'is-done' : ''}">
         <div class="prayer-name">"Most Holy Theotokos save me!"</div>
-        <button class="status-toggle-btn ${data.theotokos ? 'done' : ''}" 
+        <button type="button" class="status-toggle-btn ${data.theotokos ? 'done' : ''}" 
                 onclick="togglePrayer('${user}', 'theotokos')"
                 ${!isUserLoggedIn ? 'style="opacity:0.75;"' : ''}>
           ${data.theotokos ? '✓ Prayer Completed' : 'Mark as Done'}
@@ -292,7 +291,7 @@ function renderDashboard() {
         </div>
       </div>
 
-      <!-- Note Box -->
+      <!-- Reflection Box -->
       <div class="note-box">
         <textarea placeholder="${isUserLoggedIn ? 'Daily prayer reflection...' : 'No reflection recorded.'}" 
                   ${!isUserLoggedIn ? 'disabled' : ''} 
@@ -323,7 +322,7 @@ function renderMatrix() {
 
     let rowHtml = `<tr class="${isSelected ? 'active-row' : ''}">
       <td>Day ${i + 1}</td>
-      <td style="font-size:0.75rem;">${d.getMonth() + 1}/${d.getDate()}</td>`;
+      <td style="font-size:0.8rem;">${d.getMonth() + 1}/${d.getDate()}</td>`;
 
     USERS.forEach(u => {
       const rec = db[dateStr] ? db[dateStr][u] : { jesus: false, theotokos: false };
