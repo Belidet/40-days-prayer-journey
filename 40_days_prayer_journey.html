@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>40-Day Orthodox Prayer Journey</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="ambient-glow"></div>
+
+<div class="container">
+
+  <!-- TOP HEADER -->
+  <header>
+    <div class="orthodox-cross">☦</div>
+    <h1 class="gold-text">40-DAY PRAYER JOURNEY</h1>
+    <div class="subtitle">September 11, 2026 — October 20, 2026</div>
+    <div class="scripture">"Pray without ceasing." — 1 Thessalonians 5:17</div>
+  </header>
+
+  <!-- USER AUTHENTICATION BAR -->
+  <div class="user-bar gold-border-frame">
+    <div class="user-welcome" id="userWelcomeText">
+      <span>Current Pilgrim:</span> <strong id="currentUserName">Guest (View Only)</strong>
+    </div>
+    <div class="auth-controls">
+      <select id="userSelect">
+        <option value="">Select Pilgrim...</option>
+        <option value="Belidet">Belidet</option>
+        <option value="Ephi">Ephi</option>
+        <option value="Seli">Seli</option>
+        <option value="Ermi">Ermi</option>
+      </select>
+      <input type="password" id="passInput" placeholder="Password">
+      <button onclick="loginUser()">Log In</button>
+      <button onclick="logoutUser()" class="sub-btn" id="logoutBtn" style="display:none;">Log Out</button>
+    </div>
+  </div>
+
+  <!-- SACRED ICONS BANNER -->
+  <div class="icons-banner">
+    <!-- Christ Pantocrator -->
+    <div class="icon-card gold-border-frame">
+      <div class="icon-img-wrapper">
+        <svg class="icon-svg-fallback" viewBox="0 0 160 200">
+          <rect width="160" height="200" fill="#201309"/>
+          <circle cx="80" cy="75" r="50" fill="#b8860b" opacity="0.4"/>
+          <path d="M 80,25 L 80,125 M 30,75 L 130,75" stroke="#ffd700" stroke-width="6" opacity="0.6"/>
+          <circle cx="80" cy="70" r="30" fill="#4a2e1b"/>
+          <path d="M 60,110 Q 80,130 100,110 Q 90,160 70,160 Z" fill="#800020"/>
+          <path d="M 50,140 Q 80,170 110,140" fill="none" stroke="#d4af37" stroke-width="4"/>
+          <text x="80" y="30" fill="#ffd700" font-size="14" text-anchor="middle" font-family="serif">IC XC</text>
+        </svg>
+        <img src="christ-pantocrator.jpg" 
+             alt="Lord Jesus Christ" 
+             onerror="if(this.src!='https://upload.wikimedia.org/wikipedia/commons/4/43/Spas_vsederzhitel_sinay.jpg'){this.src='https://upload.wikimedia.org/wikipedia/commons/4/43/Spas_vsederzhitel_sinay.jpg';}">
+      </div>
+      <div class="icon-caption">Lord Jesus Christ Son of God have mercy on me a sinner.</div>
+    </div>
+
+    <!-- Theotokos Vladimir -->
+    <div class="icon-card gold-border-frame">
+      <div class="icon-img-wrapper">
+        <svg class="icon-svg-fallback" viewBox="0 0 160 200">
+          <rect width="160" height="200" fill="#201309"/>
+          <circle cx="70" cy="70" r="45" fill="#b8860b" opacity="0.4"/>
+          <circle cx="100" cy="85" r="25" fill="#b8860b" opacity="0.4"/>
+          <path d="M 45,65 Q 70,120 95,180 H 30 Z" fill="#400511"/>
+          <circle cx="70" cy="65" r="25" fill="#4a2e1b"/>
+          <circle cx="95" cy="80" r="16" fill="#5c3a21"/>
+          <text x="80" y="30" fill="#ffd700" font-size="14" text-anchor="middle" font-family="serif">MP OY</text>
+        </svg>
+        <img src="theotokos-vladimir.jpg" 
+             alt="Most Holy Theotokos" 
+             onerror="if(this.src!='https://upload.wikimedia.org/wikipedia/commons/0/00/Vladimir_Theotokos.jpg'){this.src='https://upload.wikimedia.org/wikipedia/commons/0/00/Vladimir_Theotokos.jpg';}">
+      </div>
+      <div class="icon-caption">Most Holy Theotokos save me!</div>
+    </div>
+  </div>
+
+  <!-- SPIRITUAL PROLOGUE CARD -->
+  <div class="prologue-card gold-border-frame">
+    <h3>The Sacred 40-Day Rule</h3>
+    <p>
+      In Holy Orthodox Tradition, 40 days represents a sacred period of purification, spiritual transformation, and unwavering prayer. From Moses on Mount Sinai and Elijah's journey to Horeb, to our Lord Jesus Christ's 40-day fast in the wilderness, this period forms a spiritual ladder. Together, Belidet, Ephi, Seli, and Ermi embark on this 40-day rule from <strong>September 11, 2026</strong> to <strong>October 20, 2026</strong>, acquiring peace of heart through unceasing prayer.
+    </p>
+  </div>
+
+  <!-- DATE CONTROLLER -->
+  <div class="date-selector gold-border-frame">
+    <div class="date-display" id="dateDisplayLabel">Day 1 — September 11, 2026</div>
+    <div class="date-nav">
+      <button onclick="changeDate(-1)">&#9664; Prev Day</button>
+      <input type="date" id="journeyDatePicker" min="2026-09-11" max="2026-10-20" value="2026-09-11" onchange="onDatePicked(this.value)">
+      <button onclick="changeDate(1)">Next Day &#9654;</button>
+    </div>
+  </div>
+
+  <!-- PILGRIMS DASHBOARD GRID -->
+  <div class="dashboard" id="pilgrimsDashboard"></div>
+
+  <!-- 40-DAY OVERVIEW MATRIX TABLE -->
+  <div class="matrix-card gold-border-frame">
+    <h3>40-Day Journey Matrix</h3>
+    <div style="overflow-x: auto;">
+      <table class="matrix-table" id="journeyMatrixTable">
+        <!-- Rendered via JS -->
+      </table>
+    </div>
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
